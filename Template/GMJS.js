@@ -73,6 +73,8 @@ const GameMaker = {
       constructor(X, Y) {
          this.X = X;
          this.Y = Y;
+         this.angle = (Pos2) => { return Math.atan2(Pos2.Y - this.Y, Pos2.X - this.X) * 180 / Math.PI;}
+         this.distance = (Pos2) => { return Math.sqrt( (this.X - Pos2.X)*(this.X - Pos2.X) + (this.Y - Pos2.Y)*(this.Y - Pos2.Y) );}
       }
    },
 
@@ -180,7 +182,5 @@ GameMaker.Plugins.Keybord = class Keybord extends GameMaker.BasePlugin {
 
    }
 }
-
-
 
 console.log("GameMaker Started")
