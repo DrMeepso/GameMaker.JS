@@ -119,15 +119,16 @@ GameMaker.Plugins.Keybord = class Keybord extends GameMaker.BaseObject {
          World.plugins.keybord = {down: []}
 
          this.isKeyDown = (key) => {
-
-         if (keys[key] != undefined)
+            if (keys[key] != undefined)
+            {
             
-            return True
+               return True
 
-         } else {
+            } else {
 
-            return False
+               return False
 
+            }
          }
 
          var keys = World.plugins.keybord.down
