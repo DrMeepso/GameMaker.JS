@@ -13,7 +13,7 @@ function Startup() {
     world.addobjects(MouseSprite)
 
     //Do the same here but with a diffrent color
-    var MouseSpriteHover = new GameMaker.ShapeSprite("TestObject", new GameMaker.Vecter2(0, 0), new GameMaker.Vecter2(15, 15), 0, '#4ecfa8')
+    var MouseSpriteHover = new GameMaker.ShapeSprite("TestObject2", new GameMaker.Vecter2(0, 0), new GameMaker.Vecter2(15, 15), 0, '#4ecfa8')
     world.addobjects(MouseSpriteHover)
 
     //Load the mouse plugin so we can get info about mos position
@@ -22,11 +22,12 @@ function Startup() {
 
     var Roto = 0
 
-    //Update the screen
+    //Update the screenv c
     setInterval(() => {
 
-        //Make 2nd cube spin around the mouse
+        //Make cubes spin around the mouse
         Roto += 0.1
+
         MouseSpriteHover.pos.X = world.plugins.mouse.pos.X + Math.cos(Roto) * 25
         MouseSpriteHover.pos.Y = world.plugins.mouse.pos.Y + Math.sin(Roto) * 25
         MouseSpriteHover.angle = MouseSpriteHover.pos.angle(world.plugins.mouse.pos)
