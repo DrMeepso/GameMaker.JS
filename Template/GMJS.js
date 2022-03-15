@@ -23,10 +23,10 @@ const GameMaker = {
    },
 
    World: class World {
-      constructor(canvas, gravity) {
+      constructor(canvas) {
          this.canvas = canvas
          this.canvasContext = canvas.getContext('2d');
-         this.gravity = gravity
+         this.gravity = 0
          this.objects = []
          this.plugins = {}
          this.addobjects = function (Object) {
