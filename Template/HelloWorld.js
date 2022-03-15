@@ -1,15 +1,19 @@
 //In this file we will create a black cube on the screen and make it follow the mouse position
 //I know this isnt Hello World but its the easyist thing i could come up with
 
-setTimeout(() => { Startup() }, 10)
+setTimeout(() => { console.log(Startup()) }, 10)
 
 function Startup() {
 
     //Create World
     const world = new GameMaker.World(GameMaker.Init(), new GameMaker.Vecter2(0, 0))
 
+    //Create HTML image just becuase
+    var HTMLSprite = new GameMaker.ImageSprite("HTML", new GameMaker.Vecter2(0, 0), new GameMaker.Vecter2(250, 300), 0, 'HTML.png')
+    world.addobjects(HTMLSprite)
+
     //Create and add a Shape Sprite to the current world
-    var MouseSprite = new GameMaker.ShapeSprite("TestObject", new GameMaker.Vecter2(1, 1), new GameMaker.Vecter2(15, 15), 0, '#cf4e4e')
+    var MouseSprite = new GameMaker.ShapeSprite("TestObject", new GameMaker.Vecter2(0, 0), new GameMaker.Vecter2(15, 15), 0, '#cf4e4e')
     world.addobjects(MouseSprite)
 
     //Do the same here but with a diffrent color
@@ -22,8 +26,10 @@ function Startup() {
 
     var Roto = 0
 
-    //Update the screenv c
+    //Update the screen
     setInterval(() => {
+
+        HTMLSprite.pos = new GameMaker.Vecter2(world.canvas.width/2,world.canvas.height/2)
 
         //Make cubes spin around the mouse
         Roto += 0.1
@@ -40,5 +46,7 @@ function Startup() {
         world.render()
 
     }, 1000 / 60)
+
+   return world
 
 }

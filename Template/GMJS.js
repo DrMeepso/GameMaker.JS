@@ -47,12 +47,35 @@ const GameMaker = {
 
                   case "ShapeSprite":
 
+                     if (!object.visible) {return}
+                     
                      this.canvasContext.translate(object.pos.X, object.pos.Y)
 
                      this.canvasContext.rotate(object.angle * Math.PI / 180)
 
                      this.canvasContext.fillStyle = object.color
+                     this.canvasContext.globalAlpha = object.opacity / 100
                      this.canvasContext.fillRect(-object.size.X / 2, -object.size.Y / 2, object.size.X, object.size.Y)
+
+                     this.canvasContext.restore()
+                     this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
+
+
+                  break
+
+                  case "ImageSprite":
+
+                     if (!object.visible) {return}
+
+                     var image = new Image(object.size.X, object.size.Y)
+                     image.src = object.image
+
+                     this.canvasContext.translate(object.pos.X, object.pos.Y)
+
+                     this.canvasContext.rotate(object.angle * Math.PI / 180)
+
+                     this.canvasContext.globalAlpha = object.opacity / 100
+                     this.canvasContext.drawImage(image, -object.size.X / 2, -object.size.X / 2, object.size.X, object.size.Y);
 
                      this.canvasContext.restore()
                      this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
@@ -86,6 +109,8 @@ const GameMaker = {
          this.name = Name
          this.size = Size
          this.angle = Angle
+         this.visible = true
+         this.opacity = 100
 
       }
    },
