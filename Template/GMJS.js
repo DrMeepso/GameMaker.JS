@@ -26,6 +26,8 @@ const GameMaker = {
       constructor(canvas) {
          this.canvas = canvas
          this.canvasContext = canvas.getContext('2d');
+         this.canvas.addEventListener("contextmenu", e => e.preventDefault());
+
          this.gravity = 0
          this.objects = []
          this.plugins = {}
@@ -36,6 +38,7 @@ const GameMaker = {
 
          }
 
+         
          this.canvasContext.save()
 
          this.render = function () {
@@ -73,15 +76,12 @@ const GameMaker = {
 
                      if (!object.visible) { return }
 
-                     var image = new Image(object.size.X, object.size.Y)
-                     image.src = object.image
-
                      this.canvasContext.translate(object.pos.X, object.pos.Y)
 
                      this.canvasContext.rotate(object.angle * Math.PI / 180)
 
                      this.canvasContext.globalAlpha = object.opacity / 100
-                     this.canvasContext.drawImage(image, -object.size.X / 2, -object.size.X / 2, object.size.X, object.size.Y);
+                     this.canvasContext.drawImage(object.imageObject, -object.size.X / 2, -object.size.X / 2, object.size.X, object.size.Y);
 
                      this.canvasContext.restore()
                      this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
@@ -159,7 +159,8 @@ GameMaker.ImageSprite = class ImageSprite extends GameMaker.BaseObject {
 
       super(Name, Position, Size, Angle)
       this.type = "ImageSprite"
-      this.image = ImageURL
+      this.imageObject = new Image(Size.X, Size.Y)
+      this.imageObject.src = ImageURL
 
    }
 }

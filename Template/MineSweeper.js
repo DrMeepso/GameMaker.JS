@@ -1,36 +1,24 @@
-//In this file we will create a black cube on the screen and make it follow the mouse position
-//I know this isnt Hello World but its the easyist thing i could come up with
-
-// #aad751
-// #a2d149
-
-// #d7b899
-// #e5c29f
-
-// #b9dd77
-
 setTimeout(() => { console.log(Startup()) }, 10)
-
-function getColor(Value) {
-
-   if (Value % 2 == 0) {
-
-      return '#aad751'
-
-   } else {
-
-      return '#a2d149'
-
-   }
-
-
-}
 
 function lerp(v0, v1, t) {
    return v0 * (1 - t) + v1 * t
 }
 
+function PreloadImages(){
+
+   var UpdateImage = new Image(30, 30)
+   UpdateImage.src = '/Assets/minesweeper_Pressed.png'
+
+   var UpdateImage = new Image(30, 30)
+   UpdateImage.src = '/Assets/minesweeper_Flag.png'
+
+   var UpdateImage = new Image(30, 30)
+   UpdateImage.src = '/Assets/minesweeper_Unpressed.png'
+}
+
 function Startup() {
+
+   PreloadImages()
 
    //Create World
    const world = new GameMaker.World(GameMaker.Init(), new GameMaker.Vecter2(0, 0))
@@ -43,16 +31,16 @@ function Startup() {
 
       for (let Y = 0; Y < 10; Y++) {
 
-         var Tile = new GameMaker.ShapeSprite("TileObject", new GameMaker.Vecter2(100 + (X * 60), 100 + (Y * 60)), new GameMaker.Vecter2(60, 60), 0, getColor(X + Y))
-         Tile.basicColor = getColor(X + Y)
+         var Tile = new GameMaker.ImageSprite("TileObject", new GameMaker.Vecter2(100 + (X * 60), 100 + (Y * 60)), new GameMaker.Vecter2(60, 60), 0, '/Assets/minesweeper_Unpressed.png')
          Tile.ID = (Y + (10 * X))
          Tile.Pressed = false
          Tile.Bomb = false
+         Tile.Flaged = false
          world.addobjects(Tile)
       }
    }
 
-   var Text = new GameMaker.TextSprite("FPS", new GameMaker.Vecter2(0, 0), 0, "FPS: ")
+   var Text = new GameMaker.TextSprite("FPS", new GameMaker.Vecter2(1, 1), 0, "FPS: ")
    Text.font = "Consolas"
    world.addobjects(Text)
 
@@ -67,16 +55,37 @@ function Startup() {
 
       var SelectedObject = world.objects.find(object => object.ID === Selected.SelectedID)
 
-      if (SelectedObject.basicColor == '#aad751') {
+      if (e.button == 0 && SelectedObject.Flaged == false) {
 
-         SelectedObject.color = '#e5c29f'
+         var UpdateImage = new Image(30, 30)
+         UpdateImage.src = '/Assets/minesweeper_Pressed.png'
+
+         SelectedObject.imageObject = UpdateImage
          SelectedObject.Pressed = true
 
-      } else if (SelectedObject.basicColor == '#a2d149') {
+      }
+      if (e.button == 2) {
 
-         SelectedObject.color = '#d7b899'
-         SelectedObject.Pressed = true
+         if (SelectedObject.Pressed) {return}
 
+         SelectedObject.Flaged = !SelectedObject.Flaged
+
+         if (SelectedObject.Flaged == true){
+
+            var UpdateImage = new Image(30, 30)
+            UpdateImage.src = '/Assets/minesweeper_Flag.png'
+   
+            SelectedObject.imageObject = UpdateImage
+
+         } else {
+
+            var UpdateImage = new Image(30, 30)
+            UpdateImage.src = '/Assets/minesweeper_Unpressed.png'
+   
+            SelectedObject.imageObject = UpdateImage
+
+         }
+            
       }
 
    })
@@ -95,7 +104,7 @@ function Startup() {
          }
       })
 
-      Selected.pos = new GameMaker.Vecter2(lerp(Selected.pos.X, Selected.Neededpos.X, 0.4), lerp(Selected.pos.Y, Selected.Neededpos.Y, 0.4))
+      Selected.pos = new GameMaker.Vecter2(lerp(Selected.pos.X, Selected.Neededpos.X, 0.2), lerp(Selected.pos.Y, Selected.Neededpos.Y, 0.2))
 
       world.render()
 
