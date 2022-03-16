@@ -162,6 +162,15 @@ GameMaker.ImageSprite = class ImageSprite extends GameMaker.BaseObject {
       this.imageObject = new Image(Size.X, Size.Y)
       this.imageObject.src = ImageURL
 
+      this.changeImage = (ImageURL) => {
+
+         var UpdateImage = new Image(30, 30)
+         UpdateImage.src = ImageURL
+
+         this.imageObject = UpdateImage
+
+      } 
+
    }
 }
 
