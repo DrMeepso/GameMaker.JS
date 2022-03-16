@@ -29,6 +29,7 @@ const GameMaker = {
          this.gravity = 0
          this.objects = []
          this.plugins = {}
+         this.backgroundColor = '#ffffff'
          this.addobjects = function (Object) {
 
             this.objects.push(Object)
@@ -39,8 +40,11 @@ const GameMaker = {
 
          this.render = function () {
 
-            this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.canvasContext.fillStyle = this.backgroundColor
+            this.canvasContext.fillRect(0, 0, this.canvas.width, this.canvas.height)
 
+            this.canvasContext.restore()
+         
             this.objects.forEach((object) => {
 
                switch(object.type){
@@ -76,6 +80,25 @@ const GameMaker = {
 
                      this.canvasContext.globalAlpha = object.opacity / 100
                      this.canvasContext.drawImage(image, -object.size.X / 2, -object.size.X / 2, object.size.X, object.size.Y);
+
+                     this.canvasContext.restore()
+                     this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
+
+
+                  break
+
+                  case "TextSprite":
+
+                     if (!object.visible) {return}
+
+                     this.canvasContext.translate(object.pos.X, object.pos.Y)
+
+                     this.canvasContext.rotate(object.angle * Math.PI / 180)
+
+                     this.canvasContext.font = '48px serif';
+                     this.canvasContext.fillStyle = object.color
+                     this.canvasContext.globalAlpha = object.opacity / 100
+                     this.canvasContext.fillText(object.text, 0, 0);
 
                      this.canvasContext.restore()
                      this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
@@ -139,11 +162,21 @@ GameMaker.ImageSprite = class ImageSprite extends GameMaker.BaseObject {
 }
 
 GameMaker.ShapeSprite = class ShapeSprite extends GameMaker.BaseObject {
-   constructor(Name, Position, Size, Angle, Color) {
+   constructor(Name, Position, Size ,Angle, Color) {
 
       super(Name, Position, Size, Angle)
       this.type = "ShapeSprite"
       this.color = Color
+
+   }
+}
+
+GameMaker.TextSprite = class TextSprite extends GameMaker.BaseObject {
+   constructor(Name, Position, Angle, Text) {
+
+      super(Name, Position, {X:0, Y:0}, Angle)
+      this.type = "TextSprite"
+      this.text = Text
 
    }
 }
