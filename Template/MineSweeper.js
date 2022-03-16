@@ -27,88 +27,89 @@ function getColor(Value) {
 }
 
 function lerp(v0, v1, t) {
-    return v0*(1-t)+v1*t
+   return v0 * (1 - t) + v1 * t
 }
 
 function Startup() {
 
-    //Create World
-    const world = new GameMaker.World(GameMaker.Init(), new GameMaker.Vecter2(0, 0))
-    world.backgroundColor = '#202124'
+   //Create World
+   const world = new GameMaker.World(GameMaker.Init(), new GameMaker.Vecter2(0, 0))
+   world.backgroundColor = '#202124'
 
-    new GameMaker.Plugins.Mouse(world)
+   new GameMaker.Plugins.Mouse(world)
 
-    var Text = new GameMaker.TextSprite("FPS", new GameMaker.Vecter2(0,0),0,"FPS: ")
-    world.addobjects(Text)
+   //Create Tiles
+   for (let X = 0; X < 10; X++) {
 
-    //Create Tiles
-    for (let X = 0; X < 10; X++) {
-      
       for (let Y = 0; Y < 10; Y++) {
-      
-         var Tile = new GameMaker.ShapeSprite("TileObject", new GameMaker.Vecter2( 50 +(X * 30), 50 + (Y * 30)), new GameMaker.Vecter2(30, 30), 0, getColor(X + Y))
+
+         var Tile = new GameMaker.ShapeSprite("TileObject", new GameMaker.Vecter2(100 + (X * 60), 100 + (Y * 60)), new GameMaker.Vecter2(60, 60), 0, getColor(X + Y))
          Tile.basicColor = getColor(X + Y)
          Tile.ID = (Y + (10 * X))
          Tile.Pressed = false
+         Tile.Bomb = false
          world.addobjects(Tile)
       }
-    }
+   }
 
-    var Selected = new GameMaker.ShapeSprite("Selected", new GameMaker.Vecter2(0,0), new GameMaker.Vecter2(30, 30), 0, "#ffffff")
-    Selected.opacity = 20
-    Selected.Neededpos = new GameMaker.Vecter2(0,0)
-    world.addobjects(Selected)
+   var Text = new GameMaker.TextSprite("FPS", new GameMaker.Vecter2(0, 0), 0, "FPS: ")
+   Text.font = "Consolas"
+   world.addobjects(Text)
 
-    var FPS = 0
+   var Selected = new GameMaker.ShapeSprite("Selected", new GameMaker.Vecter2(-60, -60), new GameMaker.Vecter2(60, 60), 0, "#ffffff")
+   Selected.opacity = 20
+   Selected.Neededpos = new GameMaker.Vecter2(-30, -30)
+   world.addobjects(Selected)
 
-    world.canvas.addEventListener("mousedown", function (e) {
+   var FPS = 0
 
-      console.log(e)  
+   world.canvas.addEventListener("mousedown", function (e) {
 
-    })
+      var SelectedObject = world.objects.find(object => object.ID === Selected.SelectedID)
+
+      if (SelectedObject.basicColor == '#aad751') {
+
+         SelectedObject.color = '#e5c29f'
+         SelectedObject.Pressed = true
+
+      } else if (SelectedObject.basicColor == '#a2d149') {
+
+         SelectedObject.color = '#d7b899'
+         SelectedObject.Pressed = true
+
+      }
+
+   })
 
 
-    //Update the screen
-    setInterval(() => {
+   //Update the screen
+   setInterval(() => {
 
-         // Highlight selected tile
-         world.objects.forEach( (Object) => {
+      world.objects.forEach((Object) => {
 
-            if (Object.name != "TileObject") {return}
+         if (Object.name != "TileObject") { return }
 
-            if (((world.plugins.mouse.pos.X >= (Object.pos.X - (Object.size.X / 2))) && (world.plugins.mouse.pos.Y >= (Object.pos.Y - (Object.size.Y / 2)))) && ((world.plugins.mouse.pos.X <= (Object.pos.X + (Object.size.X / 2))) && (world.plugins.mouse.pos.Y <= (Object.pos.Y + (Object.size.Y / 2))))) {
-               Selected.Neededpos = Object.pos
-               Selected.SelectedID = Object.ID
-            }     
-         })
-        
-         Selected.pos = new GameMaker.Vecter2(lerp(Selected.pos.X, Selected.Neededpos.X, 0.4),lerp(Selected.pos.Y, Selected.Neededpos.Y, 0.4))
-
-         if (world.objects.find( object => object.ID === Selected.SelectedID ).basicColor == '#aad751') {
-
-            world.objects.find( object => object.ID === Selected.SelectedID ).color = '#e5c29f'
-
+         if (((world.plugins.mouse.pos.X >= (Object.pos.X - (Object.size.X / 2))) && (world.plugins.mouse.pos.Y >= (Object.pos.Y - (Object.size.Y / 2)))) && ((world.plugins.mouse.pos.X <= (Object.pos.X + (Object.size.X / 2))) && (world.plugins.mouse.pos.Y <= (Object.pos.Y + (Object.size.Y / 2))))) {
+            Selected.Neededpos = Object.pos
+            Selected.SelectedID = Object.ID
          }
-         if (world.objects.find( object => object.ID === Selected.SelectedID ).basicColor == '#a2d149') {
+      })
 
-            world.objects.find( object => object.ID === Selected.SelectedID ).color = '#d7b899'
+      Selected.pos = new GameMaker.Vecter2(lerp(Selected.pos.X, Selected.Neededpos.X, 0.4), lerp(Selected.pos.Y, Selected.Neededpos.Y, 0.4))
 
-         }
+      world.render()
 
-        //Render the world to the screen
-        world.render()
+      FPS += 1
 
-        FPS += 1
+   }, 1000 / 120)
 
-    }, 1000 / 120)
+   //Calculate FPS
+   setInterval(() => {
 
-    //Calculate FPS
-    setInterval(() => {
+      Text.text = `FPS: ${FPS * 4}`
+      FPS = 0
 
-        Text.text = `FPS: ${FPS * 4}`
-        FPS = 0
-
-    }, 250)
+   }, 250)
 
    return world
 

@@ -40,19 +40,21 @@ const GameMaker = {
 
          this.render = function () {
 
+            this.canvasContext.restore()
+
+            this.canvasContext.globalAlpha = 1
+            this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.canvasContext.fillStyle = this.backgroundColor
             this.canvasContext.fillRect(0, 0, this.canvas.width, this.canvas.height)
 
-            this.canvasContext.restore()
-         
             this.objects.forEach((object) => {
 
-               switch(object.type){
+               switch (object.type) {
 
                   case "ShapeSprite":
 
-                     if (!object.visible) {return}
-                     
+                     if (!object.visible) { return }
+
                      this.canvasContext.translate(object.pos.X, object.pos.Y)
 
                      this.canvasContext.rotate(object.angle * Math.PI / 180)
@@ -65,11 +67,11 @@ const GameMaker = {
                      this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
 
 
-                  break
+                     break
 
                   case "ImageSprite":
 
-                     if (!object.visible) {return}
+                     if (!object.visible) { return }
 
                      var image = new Image(object.size.X, object.size.Y)
                      image.src = object.image
@@ -85,26 +87,27 @@ const GameMaker = {
                      this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
 
 
-                  break
+                     break
 
                   case "TextSprite":
 
-                     if (!object.visible) {return}
+                     if (!object.visible) { return }
 
                      this.canvasContext.translate(object.pos.X, object.pos.Y)
 
                      this.canvasContext.rotate(object.angle * Math.PI / 180)
 
-                     this.canvasContext.font = '48px serif';
                      this.canvasContext.fillStyle = object.color
                      this.canvasContext.globalAlpha = object.opacity / 100
-                     this.canvasContext.fillText(object.text, 0, 0);
+                     this.canvasContext.font = `${object.fontSize}px ${object.font}`;
+                     this.canvasContext.fillStyle = object.fontColor;
+                     this.canvasContext.fillText(object.text, 0, object.fontSize);
 
                      this.canvasContext.restore()
                      this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
 
 
-                  break
+                     break
 
 
                }
@@ -119,8 +122,8 @@ const GameMaker = {
       constructor(X, Y) {
          this.X = X;
          this.Y = Y;
-         this.angle = (Pos2) => { return Math.atan2(Pos2.Y - this.Y, Pos2.X - this.X) * 180 / Math.PI;}
-         this.distance = (Pos2) => { return Math.sqrt( (this.X - Pos2.X)*(this.X - Pos2.X) + (this.Y - Pos2.Y)*(this.Y - Pos2.Y) );}
+         this.angle = (Pos2) => { return Math.atan2(Pos2.Y - this.Y, Pos2.X - this.X) * 180 / Math.PI; }
+         this.distance = (Pos2) => { return Math.sqrt((this.X - Pos2.X) * (this.X - Pos2.X) + (this.Y - Pos2.Y) * (this.Y - Pos2.Y)); }
       }
    },
 
@@ -162,7 +165,7 @@ GameMaker.ImageSprite = class ImageSprite extends GameMaker.BaseObject {
 }
 
 GameMaker.ShapeSprite = class ShapeSprite extends GameMaker.BaseObject {
-   constructor(Name, Position, Size ,Angle, Color) {
+   constructor(Name, Position, Size, Angle, Color) {
 
       super(Name, Position, Size, Angle)
       this.type = "ShapeSprite"
@@ -174,9 +177,12 @@ GameMaker.ShapeSprite = class ShapeSprite extends GameMaker.BaseObject {
 GameMaker.TextSprite = class TextSprite extends GameMaker.BaseObject {
    constructor(Name, Position, Angle, Text) {
 
-      super(Name, Position, {X:0, Y:0}, Angle)
+      super(Name, Position, { X: 0, Y: 0 }, Angle)
       this.type = "TextSprite"
       this.text = Text
+      this.fontSize = 12
+      this.fontColor = 'white'
+      this.font = 'Arial'
 
    }
 }
