@@ -1,4 +1,4 @@
-setTimeout(() => { console.log(Startup()) }, 1)
+setTimeout(() => { console.log(Startup()) }, 100)
 
 var GameState = {
 

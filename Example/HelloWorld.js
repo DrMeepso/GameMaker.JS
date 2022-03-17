@@ -1,7 +1,7 @@
 //In this file we will create a black cube on the screen and make it follow the mouse position
 //I know this isnt Hello World but its the easyist thing i could come up with
 
-setTimeout(() => { console.log(Startup()) }, 10)
+setTimeout(() => { console.log(Startup()) }, 100)
 
 function Startup() {
 
