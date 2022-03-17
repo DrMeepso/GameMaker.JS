@@ -60,12 +60,17 @@ const GameMaker = {
    */
 
    World: class World {
+
+      /**
+      *  @constructor
+      *  
+      */
+
       constructor(canvas) {
          this.canvas = canvas
          this.canvasContext = canvas.getContext('2d');
          this.canvas.addEventListener("contextmenu", e => e.preventDefault());
 
-         this.gravity = 0
          this.objects = []
          this.plugins = {}
          this.backgroundColor = '#ffffff'
@@ -73,6 +78,17 @@ const GameMaker = {
          * Add sprite to render list so it will render to the canvas
          * @param {GameMaker.BaseObject} Object
          * @memberof GameMaker.World
+         * @example
+         * //Create a new world and add a object to it
+         * 
+         * //Create new world
+         * const world = new GameMaker.World(GameMaker.Init())
+         * 
+         * //Create new ImageSprite 
+         * var ImageSprite = new GameMaker.TextSprite("TestImage", new GameMaker.Vector2(1, 1), new GameMaker.Vector2(10, 10), 0, 'Image.png')
+         * 
+         * //Add the sprite to the world when world.render() is used it will show up
+         * world.addobjects(ImageSprite)
          */
          this.addobjects = function (Object) {
 
@@ -182,8 +198,23 @@ const GameMaker = {
 
    Vector2: class Vector2 {
       constructor(X, Y) {
+
+         /**
+         * The X Vector of the Vector2 
+         * @constant {number}
+         * @default
+         * @memberof GameMaker.Vector2
+         */
          this.X = X;
+
+         /**
+         * The Y Vector of the Vector2 
+         * @constant {number}
+         * @default
+         * @memberof GameMaker.Vector2
+         */
          this.Y = Y;
+
          /** 
          * Given another Vector2 it will return a number between 0 and 360 that is the angle between the 2 positions
          * @param {GameMaker.Vector2} Pos2
@@ -233,11 +264,13 @@ const GameMaker = {
    * @param {GameMaker.Vector2} Size
    * @param {number} Angle
    * @class
-   * @private
    */
    BaseObject: class BaseObject {
       constructor(Name, Position, Size, Angle) {
 
+         /**
+         * @memberof GameMaker.BaseObject
+         */
          this.type = "BaseObject"
          this.pos = Position
          this.name = Name
@@ -274,14 +307,28 @@ const GameMaker = {
 
    /**
    * A object that renders a image to the screen when added to a world
+   * @param {string} Name
+   * @param {GameMaker.Vector2} Position
+   * @param {GameMaker.Vector2} Position
+   * @param {GameMaker.Vector2} Size
+   * @param {number} Angle
    * @param {string} URL the image the sprite renders as
    * @class
+   * @override
+   * @inheritdoc
    */
 GameMaker.ImageSprite = class ImageSprite extends GameMaker.BaseObject {
    constructor(Name, Position, Size, Angle, ImageURL) {
 
       super(Name, Position, Size, Angle)
       this.type = "ImageSprite"
+      this.pos 
+      this.name
+      this.size
+      this.angle
+      this.visible = true
+      this.opacity = 100
+
       this.imageObject = new Image(Size.X, Size.Y)
       this.imageObject.src = ImageURL
 

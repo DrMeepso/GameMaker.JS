@@ -58,6 +58,12 @@
                       </a></li>
                     
                       <li><a
+                        href='#gamemakerbaseobject'
+                        class='regular pre-open'>
+                        .BaseObject
+                      </a></li>
+                    
+                      <li><a
                         href='#gamemakerimagesprite'
                         class='regular pre-open'>
                         .ImageSprite
@@ -324,7 +330,7 @@
 
   <p>Add sprite to render list so it will render to the canvas</p>
 
-    <div class='pre p1 fill-light mt0'>addobjects(Object: GameMaker.BaseObject)</div>
+    <div class='pre p1 fill-light mt0'>addobjects(Object: <a href="#gamemakerbaseobject">GameMaker.BaseObject</a>)</div>
   
   
 
@@ -341,7 +347,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>Object</span> <code class='quiet'>(GameMaker.BaseObject)</code>
+            <span class='code bold'>Object</span> <code class='quiet'>(<a href="#gamemakerbaseobject">GameMaker.BaseObject</a>)</code>
 	    
           </div>
           
@@ -358,6 +364,21 @@
 
   
 
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Create a new world and add a object to it</span>
+
+<span class="hljs-comment">//Create new world</span>
+<span class="hljs-keyword">const</span> world = <span class="hljs-keyword">new</span> GameMaker.World(GameMaker.Init())
+
+<span class="hljs-comment">//Create new ImageSprite </span>
+<span class="hljs-keyword">var</span> ImageSprite = <span class="hljs-keyword">new</span> GameMaker.TextSprite(<span class="hljs-string">&quot;TestImage&quot;</span>, <span class="hljs-keyword">new</span> GameMaker.Vector2(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), <span class="hljs-keyword">new</span> GameMaker.Vector2(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>), <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;Image.png&#x27;</span>)
+
+<span class="hljs-comment">//Add the sprite to the world when world.render() is used it will show up</span>
+world.addobjects(ImageSprite)</pre>
+    
   
 
   
@@ -509,6 +530,114 @@
   
     <div class='py1 quiet mt1 prose-big'>Static Members</div>
     <div class="clearfix">
+  
+    <div class='border-bottom' id='gamemakervector2x'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>X</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>The X Vector of the Vector2</p>
+
+    <div class='pre p1 fill-light mt0'>X</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakervector2y'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>Y</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>The Y Vector of the Vector2</p>
+
+    <div class='pre p1 fill-light mt0'>Y</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
   
     <div class='border-bottom' id='gamemakervector2angle'>
       <div class="clearfix small pointer toggle-sibling">
@@ -694,11 +823,159 @@
       </div>
     </div>
   
+    <div class='border-bottom' id='gamemakerbaseobject'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new BaseObject(Name, Position, Position, Size, Angle)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>A Base object that can be used to make new renderable objects</p>
+
+    <div class='pre p1 fill-light mt0'>new BaseObject(Name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, Position: <a href="#gamemakervector2">GameMaker.Vector2</a>, Position: <a href="#gamemakervector2">GameMaker.Vector2</a>, Size: <a href="#gamemakervector2">GameMaker.Vector2</a>, Angle: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Position</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Position</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Size</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Angle</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='gamemakerbaseobjecttype'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>type</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  
+    <div class='pre p1 fill-light mt0'>type</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='gamemakerimagesprite'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>new ImageSprite(URL)</span>
+            <span class='code strong strong truncate'>new ImageSprite(Name, Position, Position, Size, Angle, URL)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -708,13 +985,13 @@
 
   <p>A object that renders a image to the screen when added to a world</p>
 
-    <div class='pre p1 fill-light mt0'>new ImageSprite(URL: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+    <div class='pre p1 fill-light mt0'>new ImageSprite(Name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, Position: <a href="#gamemakervector2">GameMaker.Vector2</a>, Position: <a href="#gamemakervector2">GameMaker.Vector2</a>, Size: <a href="#gamemakervector2">GameMaker.Vector2</a>, Angle: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, URL: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
   
   
     <p>
       Extends
       
-        GameMaker.BaseObject
+        <a href="#gamemakerbaseobject">GameMaker.BaseObject</a>
       
     </p>
   
@@ -729,6 +1006,46 @@
   
     <div class='py1 quiet mt1 prose-big'>Parameters</div>
     <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Position</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Position</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Size</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Angle</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    
+          </div>
+          
+        </div>
       
         <div class='space-bottom0'>
           <div>
@@ -784,7 +1101,7 @@
     <p>
       Extends
       
-        GameMaker.BaseObject
+        <a href="#gamemakerbaseobject">GameMaker.BaseObject</a>
       
     </p>
   
@@ -854,7 +1171,7 @@
     <p>
       Extends
       
-        GameMaker.BaseObject
+        <a href="#gamemakerbaseobject">GameMaker.BaseObject</a>
       
     </p>
   
