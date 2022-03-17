@@ -52,9 +52,9 @@
                       </a></li>
                     
                       <li><a
-                        href='#gamemakervecter2'
+                        href='#gamemakervector2'
                         class='regular pre-open'>
-                        .Vecter2
+                        .Vector2
                       </a></li>
                     
                       <li><a
@@ -104,9 +104,9 @@
                       </a></li>
                     
                       <li><a
-                        href='#pluginskeybord'
+                        href='#pluginskeyboard'
                         class='regular pre-open'>
-                        .Keybord
+                        .Keyboard
                       </a></li>
                     
                     </ul>
@@ -182,7 +182,7 @@
 
   
 
-  <p>Creates a canvas element and then appends it to the html Body</p>
+  <p>Creates a canvas element and then appends it to the HTML Body</p>
 <p>It will also auto update the canvs to take up 100% of the screen so it will scale</p>
 
     <div class='pre p1 fill-light mt0'>Init(): canvas</div>
@@ -411,7 +411,7 @@
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Look at the GameMaker.World example to see how its used</span></pre>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Look at the GameMaker.World example to see how it&#x27;s used</span></pre>
     
   
 
@@ -441,11 +441,11 @@
       </div>
     </div>
   
-    <div class='border-bottom' id='gamemakervecter2'>
+    <div class='border-bottom' id='gamemakervector2'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>new Vecter2(X, Y)</span>
+            <span class='code strong strong truncate'>new Vector2(X, Y)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -455,7 +455,7 @@
 
   <p>A object that contains 2 numbers X and Y, used for things like position and size</p>
 
-    <div class='pre p1 fill-light mt0'>new Vecter2(X: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, Y: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
+    <div class='pre p1 fill-light mt0'>new Vector2(X: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, Y: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
   
   
 
@@ -501,8 +501,8 @@
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Create a new Vecter2 where both the X and Y are 0</span>
-<span class="hljs-keyword">var</span> Vecter2 = <span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)</pre>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Create a new Vector2 where both the X and Y are 0</span>
+<span class="hljs-keyword">var</span> Vector2 = <span class="hljs-keyword">new</span> GameMaker.Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)</pre>
     
   
 
@@ -510,7 +510,7 @@
     <div class='py1 quiet mt1 prose-big'>Static Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='gamemakervecter2angle'>
+    <div class='border-bottom' id='gamemakervector2angle'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -522,9 +522,9 @@
 
   
 
-  <p>Given another Vecter2 it will return a number between 0 and 360 that is the angle between the 2 positions</p>
+  <p>Given another Vector2 it will return a number between 0 and 360 that is the angle between the 2 positions</p>
 
-    <div class='pre p1 fill-light mt0'>angle(Pos2: <a href="#gamemakervecter2">GameMaker.Vecter2</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+    <div class='pre p1 fill-light mt0'>angle(Pos2: <a href="#gamemakervector2">GameMaker.Vector2</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
   
   
 
@@ -541,7 +541,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>Pos2</span> <code class='quiet'>(<a href="#gamemakervecter2">GameMaker.Vecter2</a>)</code>
+            <span class='code bold'>Pos2</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
 	    
           </div>
           
@@ -572,11 +572,11 @@
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//How to use the Angle function</span>
 
-<span class="hljs-comment">//Create a new Vecter2 (Just for the example)</span>
-<span class="hljs-keyword">var</span> Vecter2 = <span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+<span class="hljs-comment">//Create a new Vector2 (Just for the example)</span>
+<span class="hljs-keyword">var</span> Vector2 = <span class="hljs-keyword">new</span> GameMaker.Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
 
 <span class="hljs-comment">//Saves the angle to a var</span>
-<span class="hljs-keyword">var</span> Angle = Vecter2.angle(<span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>))
+<span class="hljs-keyword">var</span> Angle = Vector2.angle(<span class="hljs-keyword">new</span> GameMaker.Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>))
 
 <span class="hljs-comment">//Print out the angle vecter, it should be 90</span>
 <span class="hljs-built_in">console</span>.log(Angle)</pre>
@@ -595,7 +595,7 @@
       </div>
     </div>
   
-    <div class='border-bottom' id='gamemakervecter2distance'>
+    <div class='border-bottom' id='gamemakervector2distance'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -607,9 +607,9 @@
 
   
 
-  <p>Given another Vecter2 it will return a number representing the distance in pixels between the 2 positions</p>
+  <p>Given another Vector2 it will return a number representing the distance in pixels between the 2 positions</p>
 
-    <div class='pre p1 fill-light mt0'>distance(Pos2: <a href="#gamemakervecter2">GameMaker.Vecter2</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+    <div class='pre p1 fill-light mt0'>distance(Pos2: <a href="#gamemakervector2">GameMaker.Vector2</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
   
   
 
@@ -626,7 +626,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>Pos2</span> <code class='quiet'>(<a href="#gamemakervecter2">GameMaker.Vecter2</a>)</code>
+            <span class='code bold'>Pos2</span> <code class='quiet'>(<a href="#gamemakervector2">GameMaker.Vector2</a>)</code>
 	    
           </div>
           
@@ -657,11 +657,11 @@
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//How to use the Distance function</span>
 
-<span class="hljs-comment">//Create a new Vecter2 (Just for the example)</span>
-<span class="hljs-keyword">var</span> Vecter2 = <span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+<span class="hljs-comment">//Create a new Vector2 (Just for the example)</span>
+<span class="hljs-keyword">var</span> Vector2 = <span class="hljs-keyword">new</span> GameMaker.Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
 
 <span class="hljs-comment">//Saves the distance to a var</span>
-<span class="hljs-keyword">var</span> Distance = Vecter2.angle(<span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">10</span>,<span class="hljs-number">0</span>))
+<span class="hljs-keyword">var</span> Distance = Vector2.angle(<span class="hljs-keyword">new</span> GameMaker.Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">0</span>))
 
 <span class="hljs-comment">//Print out the distance vecter, it should be 10 since X-10 is 10 pixels away from X-0</span>
 <span class="hljs-built_in">console</span>.log(Distance)</pre>
@@ -973,8 +973,8 @@
   
 
   <p>A plugin that allows you to get the canvas position of the mouse pointer,</p>
-<p>!!Keep in mind that you have to use document events to check for mouse clicks.
-This plugin is only use to find the canvas position of the mouse!!</p>
+<p><strong>Keep in mind you have to use document events to check for mouse clicks.
+This plugin is only use to find the canvas position of the mouse</strong></p>
 
     <div class='pre p1 fill-light mt0'>new Mouse(world: <a href="#gamemakerworld">GameMaker.World</a>)</div>
   
@@ -1054,11 +1054,11 @@ This plugin is only use to find the canvas position of the mouse!!</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='pluginskeybord'>
+    <div class='border-bottom' id='pluginskeyboard'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>new Keybord(world)</span>
+            <span class='code strong strong truncate'>new Keyboard(world)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1066,9 +1066,9 @@ This plugin is only use to find the canvas position of the mouse!!</p>
 
   
 
-  <p>A plugin that allows you to get the currntly pressed buttons on a keybord</p>
+  <p>A plugin that allows you to get the currntly pressed buttons on a Keyboard</p>
 
-    <div class='pre p1 fill-light mt0'>new Keybord(world: <a href="#gamemakerworld">GameMaker.World</a>)</div>
+    <div class='pre p1 fill-light mt0'>new Keyboard(world: <a href="#gamemakerworld">GameMaker.World</a>)</div>
   
   
     <p>
@@ -1116,8 +1116,8 @@ This plugin is only use to find the canvas position of the mouse!!</p>
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Creating a new world and then adding the mouse plugin to it</span>
 <span class="hljs-comment">//Create the world</span>
 <span class="hljs-keyword">const</span> world = <span class="hljs-keyword">new</span> GameMaker.World(GameMaker.Init())
-<span class="hljs-comment">//Add the keybord plugin to the world</span>
-<span class="hljs-keyword">new</span> GameMaker.Plugins.Keybord(world)</pre>
+<span class="hljs-comment">//Add the Keyboard plugin to the world</span>
+<span class="hljs-keyword">new</span> GameMaker.Plugins.Keyboard(world)</pre>
     
   
 

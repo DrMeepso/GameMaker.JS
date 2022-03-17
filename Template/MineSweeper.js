@@ -222,7 +222,7 @@ function Startup() {
 
       for (let Y = 0; Y < 10; Y++) {
 
-         var Tile = new GameMaker.ImageSprite("TileObject", new GameMaker.Vecter2(45 + (X * 45), 45 + (Y * 45)), new GameMaker.Vecter2(45, 45), 0, 'Assets/minesweeper_Unpressed.png')
+         var Tile = new GameMaker.ImageSprite("TileObject", new GameMaker.Vector2(45 + (X * 45), 45 + (Y * 45)), new GameMaker.Vector2(45, 45), 0, 'Assets/minesweeper_Unpressed.png')
          Tile.ID = (Y + (10 * X))
          Tile.Pressed = false
          Tile.Bomb = false
@@ -231,30 +231,30 @@ function Startup() {
       }
    }
 
-   var Text = new GameMaker.TextSprite("FPS", new GameMaker.Vecter2(1, 1), 0, "FPS: ")
+   var Text = new GameMaker.TextSprite("FPS", new GameMaker.Vector2(1, 1), 0, "FPS: ")
    Text.font = "Fredoka"
    world.addobjects(Text)
 
-   var FlagCount = new GameMaker.TextSprite("Flag Count", new GameMaker.Vecter2(45 / 2, 450 + (45/2)), 0, "Flags: 0")
+   var FlagCount = new GameMaker.TextSprite("Flag Count", new GameMaker.Vector2(45 / 2, 450 + (45/2)), 0, "Flags: 0")
    FlagCount.font = "Fredoka"
    FlagCount.fontSize = "25"
    world.addobjects(FlagCount)
 
-   var CorrectCount = new GameMaker.TextSprite("Correct Count", new GameMaker.Vecter2(45 / 2, (450 + (45/2)) + 25 ), 0, "Flags: 0")
+   var CorrectCount = new GameMaker.TextSprite("Correct Count", new GameMaker.Vector2(45 / 2, (450 + (45/2)) + 25 ), 0, "Flags: 0")
    CorrectCount.font = "Fredoka"
    CorrectCount.fontSize = "25"
    world.addobjects(CorrectCount)
 
-   var GameStateText = new GameMaker.TextSprite("StateText", new GameMaker.Vecter2((45 / 2) + 20, 45/2), 0, "You ....")
+   var GameStateText = new GameMaker.TextSprite("StateText", new GameMaker.Vector2((45 / 2) + 20, 45/2), 0, "You ....")
    GameStateText.font = "Fredoka"
    GameStateText.fontColor = "#202124"
    GameStateText.fontSize = "60"
    GameStateText.visible = false
    world.addobjects(GameStateText)
 
-   var Selected = new GameMaker.ShapeSprite("Selected", new GameMaker.Vecter2(-60, -60), new GameMaker.Vecter2(45, 45), 0, "#ffffff")
+   var Selected = new GameMaker.ShapeSprite("Selected", new GameMaker.Vector2(-60, -60), new GameMaker.Vector2(45, 45), 0, "#ffffff")
    Selected.opacity = 20
-   Selected.Neededpos = new GameMaker.Vecter2(-30, -30)
+   Selected.Neededpos = new GameMaker.Vector2(-30, -30)
    world.addobjects(Selected)
 
    var FPS = 0
@@ -288,7 +288,7 @@ function Startup() {
          Selected.visible = true
       }
 
-      Selected.pos = new GameMaker.Vecter2(lerp(Selected.pos.X, Selected.Neededpos.X, 0.2), lerp(Selected.pos.Y, Selected.Neededpos.Y, 0.2))
+      Selected.pos = new GameMaker.Vector2(lerp(Selected.pos.X, Selected.Neededpos.X, 0.2), lerp(Selected.pos.Y, Selected.Neededpos.Y, 0.2))
 
       FlagCount.text = `Flags: ${GameState.BombCount - world.objects.filter(object => object.Flaged == true).length}`
       CorrectCount.text = world.objects.filter(object => object.Flaged == true && object.Bomb == true).length

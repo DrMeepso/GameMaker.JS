@@ -6,30 +6,30 @@ setTimeout(() => { console.log(Startup()) }, 10)
 function Startup() {
 
     //Create World
-    const world = new GameMaker.World(GameMaker.Init(), new GameMaker.Vecter2(0, 0))
+    const world = new GameMaker.World(GameMaker.Init(), new GameMaker.Vector2(0, 0))
 
     //Create HTML image just becuase
-    var HTMLSprite = new GameMaker.ImageSprite("HTML", new GameMaker.Vecter2(0, 0), new GameMaker.Vecter2(250, 300), 0, 'HTML.png')
+    var HTMLSprite = new GameMaker.ImageSprite("HTML", new GameMaker.Vector2(0, 0), new GameMaker.Vector2(250, 300), 0, 'HTML.png')
     world.addobjects(HTMLSprite)
 
     //Create and add a Shape Sprite to the current world
-    var MouseSprite = new GameMaker.ShapeSprite("TestObject", new GameMaker.Vecter2(0, 0), new GameMaker.Vecter2(15, 15), 0, '#cf4e4e')
+    var MouseSprite = new GameMaker.ShapeSprite("TestObject", new GameMaker.Vector2(0, 0), new GameMaker.Vector2(15, 15), 0, '#cf4e4e')
     world.addobjects(MouseSprite)
 
     //Do the same here but with a diffrent color
-    var MouseSpriteHover = new GameMaker.ShapeSprite("TestObject2", new GameMaker.Vecter2(0, 0), new GameMaker.Vecter2(15, 15), 0, '#4ecfa8')
+    var MouseSpriteHover = new GameMaker.ShapeSprite("TestObject2", new GameMaker.Vector2(0, 0), new GameMaker.Vector2(15, 15), 0, '#4ecfa8')
     world.addobjects(MouseSpriteHover)
 
     //Load the mouse plugin so we can get info about mos position
     var Mouse = new GameMaker.Plugins.Mouse(world)
-    var Keybord = new GameMaker.Plugins.Keybord(world)
+    var Keyboard = new GameMaker.Plugins.Keyboard(world)
 
     var Roto = 0
 
     //Update the screen
     setInterval(() => {
 
-        HTMLSprite.pos = new GameMaker.Vecter2(world.canvas.width/2,world.canvas.height/2)
+        HTMLSprite.pos = new GameMaker.Vector2(world.canvas.width/2,world.canvas.height/2)
 
         //Make cubes spin around the mouse
         Roto += 0.1

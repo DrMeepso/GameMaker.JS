@@ -5,7 +5,7 @@ const GameMaker = {
 
 
    /**
-    * Creates a canvas element and then appends it to the html Body
+    * Creates a canvas element and then appends it to the HTML Body
     * 
     * It will also auto update the canvs to take up 100% of the screen so it will scale
     * @returns {canvas} usable HTML canvas element
@@ -86,7 +86,7 @@ const GameMaker = {
          /**
          * Renders all objects in world to canvas
          * @memberof GameMaker.World
-         * @example //Look at the GameMaker.World example to see how its used
+         * @example //Look at the GameMaker.World example to see how it's used
          */
          this.render = function () {
 
@@ -176,47 +176,47 @@ const GameMaker = {
    * 
    * @example
    * 
-   * //Create a new Vecter2 where both the X and Y are 0
-   * var Vecter2 = new GameMaker.Vecter2(0,0)
+   * //Create a new Vector2 where both the X and Y are 0
+   * var Vector2 = new GameMaker.Vector2(0,0)
    */
 
-   Vecter2: class Vecter2 {
+   Vector2: class Vector2 {
       constructor(X, Y) {
          this.X = X;
          this.Y = Y;
          /** 
-         * Given another Vecter2 it will return a number between 0 and 360 that is the angle between the 2 positions
-         * @param {GameMaker.Vecter2} Pos2
+         * Given another Vector2 it will return a number between 0 and 360 that is the angle between the 2 positions
+         * @param {GameMaker.Vector2} Pos2
          * @returns {number} Angle
-         * @memberof GameMaker.Vecter2
+         * @memberof GameMaker.Vector2
          * 
          * @example
          * //How to use the Angle function
          * 
-         * //Create a new Vecter2 (Just for the example)
-         * var Vecter2 = new GameMaker.Vecter2(0,0)
+         * //Create a new Vector2 (Just for the example)
+         * var Vector2 = new GameMaker.Vector2(0,0)
          * 
          * //Saves the angle to a var
-         * var Angle = Vecter2.angle(new GameMaker.Vecter2(0,10))
+         * var Angle = Vector2.angle(new GameMaker.Vector2(0,10))
          * 
          * //Print out the angle vecter, it should be 90
          * console.log(Angle)
          */
          this.angle = (Pos2) => { return Math.atan2(Pos2.Y - this.Y, Pos2.X - this.X) * 180 / Math.PI; }
          /** 
-         * Given another Vecter2 it will return a number representing the distance in pixels between the 2 positions
-         * @param {GameMaker.Vecter2} Pos2
+         * Given another Vector2 it will return a number representing the distance in pixels between the 2 positions
+         * @param {GameMaker.Vector2} Pos2
          * @returns {number} Distance
-         * @memberof GameMaker.Vecter2
+         * @memberof GameMaker.Vector2
          * 
          * @example
          * //How to use the Distance function
          * 
-         * //Create a new Vecter2 (Just for the example)
-         * var Vecter2 = new GameMaker.Vecter2(0,0)
+         * //Create a new Vector2 (Just for the example)
+         * var Vector2 = new GameMaker.Vector2(0,0)
          * 
          * //Saves the distance to a var
-         * var Distance = Vecter2.angle(new GameMaker.Vecter2(10,0))
+         * var Distance = Vector2.angle(new GameMaker.Vector2(10,0))
          * 
          * //Print out the distance vecter, it should be 10 since X-10 is 10 pixels away from X-0
          * console.log(Distance)
@@ -228,9 +228,9 @@ const GameMaker = {
    /**
    * A Base object that can be used to make new renderable objects
    * @param {string} Name
-   * @param {GameMaker.Vecter2} Position
-   * @param {GameMaker.Vecter2} Position
-   * @param {GameMaker.Vecter2} Size
+   * @param {GameMaker.Vector2} Position
+   * @param {GameMaker.Vector2} Position
+   * @param {GameMaker.Vector2} Size
    * @param {number} Angle
    * @class
    * @private
@@ -334,8 +334,8 @@ GameMaker.TextSprite = class TextSprite extends GameMaker.BaseObject {
     @description 
    * A plugin that allows you to get the canvas position of the mouse pointer,
    * 
-   * !!Keep in mind that you have to use document events to check for mouse clicks.
-   * This plugin is only use to find the canvas position of the mouse!!
+   * **Keep in mind you have to use document events to check for mouse clicks.
+   * This plugin is only use to find the canvas position of the mouse**
    * 
    * @class
    * @memberof Body.Plugins
@@ -364,7 +364,7 @@ GameMaker.Plugins.Mouse = class Mouse extends GameMaker.BasePlugin {
       super(World)
       this.type = "Mouse"
       this.world.plugins.mouse = {}
-      this.world.plugins.mouse.pos = new GameMaker.Vecter2(0, 0)
+      this.world.plugins.mouse.pos = new GameMaker.Vector2(0, 0)
 
       var CurrentWorld = this.world
 
@@ -374,7 +374,7 @@ GameMaker.Plugins.Mouse = class Mouse extends GameMaker.BasePlugin {
          var canvasX = Math.round(e.clientX - cRect.left);
          var canvasY = Math.round(e.clientY - cRect.top);
 
-         this.pos = new GameMaker.Vecter2(canvasX, canvasY)
+         this.pos = new GameMaker.Vector2(canvasX, canvasY)
          CurrentWorld.plugins.mouse.pos = this.pos
 
       })
@@ -383,22 +383,22 @@ GameMaker.Plugins.Mouse = class Mouse extends GameMaker.BasePlugin {
 }
 
    /**
-   * A plugin that allows you to get the currntly pressed buttons on a keybord
+   * A plugin that allows you to get the currntly pressed buttons on a Keyboard
    * @class
    * @memberof Body.Plugins
    * @param {GameMaker.World} world
    * @example //Creating a new world and then adding the mouse plugin to it
    * //Create the world
    * const world = new GameMaker.World(GameMaker.Init())
-   * //Add the keybord plugin to the world
-   * new GameMaker.Plugins.Keybord(world)
+   * //Add the Keyboard plugin to the world
+   * new GameMaker.Plugins.Keyboard(world)
    */
-GameMaker.Plugins.Keybord = class Keybord extends GameMaker.BasePlugin {
+GameMaker.Plugins.Keyboard = class Keyboard extends GameMaker.BasePlugin {
    constructor(World) {
 
       super(World)
-      this.type = "Keybord"
-      this.world.plugins.keybord = { down: [] }
+      this.type = "Keyboard"
+      this.world.plugins.Keyboard = { down: [] }
 
       this.isKeyDown = (key) => {
          if (keys[key] != undefined) {
@@ -412,7 +412,7 @@ GameMaker.Plugins.Keybord = class Keybord extends GameMaker.BasePlugin {
          }
       }
 
-      var keys = this.world.plugins.keybord.down
+      var keys = this.world.plugins.Keyboard.down
 
       window.addEventListener("keydown",
          function (e) {
