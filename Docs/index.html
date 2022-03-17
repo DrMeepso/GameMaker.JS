@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <title>GameMaker.JS 1.0.0 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>GameMaker.JS</h3>
+          <div class='mb1'><code>1.0.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            spellcheck='false'
+            autocapitalize='off'
+            autocorrect='off'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#gamemaker'
+                  class=" toggle-sibling">
+                  GameMaker
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#gamemakerinit'
+                        class='regular pre-open'>
+                        .Init
+                      </a></li>
+                    
+                      <li><a
+                        href='#gamemakerworld'
+                        class='regular pre-open'>
+                        .World
+                      </a></li>
+                    
+                      <li><a
+                        href='#gamemakervecter2'
+                        class='regular pre-open'>
+                        .Vecter2
+                      </a></li>
+                    
+                      <li><a
+                        href='#gamemakerimagesprite'
+                        class='regular pre-open'>
+                        .ImageSprite
+                      </a></li>
+                    
+                      <li><a
+                        href='#gamemakershapesprite'
+                        class='regular pre-open'>
+                        .ShapeSprite
+                      </a></li>
+                    
+                      <li><a
+                        href='#gamemakertextsprite'
+                        class='regular pre-open'>
+                        .TextSprite
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#plugins'
+                  class=" toggle-sibling">
+                  Plugins
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#pluginsmouse'
+                        class='regular pre-open'>
+                        .Mouse
+                      </a></li>
+                    
+                      <li><a
+                        href='#pluginskeybord'
+                        class='regular pre-open'>
+                        .Keybord
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='gamemaker'>
+      GameMaker
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>The main Javascript object that contains all the methods and classes of GameMaker.js</p>
+
+    <div class='pre p1 fill-light mt0'>GameMaker</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='gamemakerinit'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>Init()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Creates a canvas element and then appends it to the html Body</p>
+<p>It will also auto update the canvs to take up 100% of the screen so it will scale</p>
+
+    <div class='pre p1 fill-light mt0'>Init(): canvas</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>canvas</code>:
+        usable HTML canvas element
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Make a canvas and add it to the HTML body, then print it to the console</span>
+<span class="hljs-built_in">console</span>.log(GameMaker.Init())</pre>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Make a new world and then auto generate a canvas</span>
+<span class="hljs-keyword">const</span> world = GameMaker.World(GameMaker.Init())</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakerworld'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new World(canvas)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>The container for objects and also used for rendering</p>
+
+    <div class='pre p1 fill-light mt0'>new World(canvas: <a href="https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement">HTMLCanvasElement</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>canvas</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement">HTMLCanvasElement</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Make a new world with canvas then update it every 60th of a second</span>
+
+<span class="hljs-comment">//Make the world</span>
+<span class="hljs-keyword">const</span> world = <span class="hljs-keyword">new</span> GameMaker.World(GameMaker.Init())
+
+<span class="hljs-comment">//Update the frame every 60th of a second</span>
+<span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {
+
+  <span class="hljs-comment">//Render the world and push it to the canvas/screen</span>
+  world.Render()
+
+}, <span class="hljs-number">1000</span>/<span class="hljs-number">60</span>)</pre>
+    
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='gamemakerworldaddobjects'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>addobjects(Object)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Add sprite to render list so it will render to the canvas</p>
+
+    <div class='pre p1 fill-light mt0'>addobjects(Object: GameMaker.BaseObject)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Object</span> <code class='quiet'>(GameMaker.BaseObject)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakerworldrender'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>render()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Renders all objects in world to canvas</p>
+
+    <div class='pre p1 fill-light mt0'>render()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Look at the GameMaker.World example to see how its used</span></pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakervecter2'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new Vecter2(X, Y)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>A object that contains 2 numbers X and Y, used for things like position and size</p>
+
+    <div class='pre p1 fill-light mt0'>new Vecter2(X: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, Y: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>X</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Y</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Create a new Vecter2 where both the X and Y are 0</span>
+<span class="hljs-keyword">var</span> Vecter2 = <span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)</pre>
+    
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='gamemakervecter2angle'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>angle(Pos2)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Given another Vecter2 it will return a number between 0 and 360 that is the angle between the 2 positions</p>
+
+    <div class='pre p1 fill-light mt0'>angle(Pos2: <a href="#gamemakervecter2">GameMaker.Vecter2</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Pos2</span> <code class='quiet'>(<a href="#gamemakervecter2">GameMaker.Vecter2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        Angle
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//How to use the Angle function</span>
+
+<span class="hljs-comment">//Create a new Vecter2 (Just for the example)</span>
+<span class="hljs-keyword">var</span> Vecter2 = <span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+
+<span class="hljs-comment">//Saves the angle to a var</span>
+<span class="hljs-keyword">var</span> Angle = Vecter2.angle(<span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>))
+
+<span class="hljs-comment">//Print out the angle vecter, it should be 90</span>
+<span class="hljs-built_in">console</span>.log(Angle)</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakervecter2distance'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>distance(Pos2)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Given another Vecter2 it will return a number representing the distance in pixels between the 2 positions</p>
+
+    <div class='pre p1 fill-light mt0'>distance(Pos2: <a href="#gamemakervecter2">GameMaker.Vecter2</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Pos2</span> <code class='quiet'>(<a href="#gamemakervecter2">GameMaker.Vecter2</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        Distance
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//How to use the Distance function</span>
+
+<span class="hljs-comment">//Create a new Vecter2 (Just for the example)</span>
+<span class="hljs-keyword">var</span> Vecter2 = <span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+
+<span class="hljs-comment">//Saves the distance to a var</span>
+<span class="hljs-keyword">var</span> Distance = Vecter2.angle(<span class="hljs-keyword">new</span> GameMaker.Vecter2(<span class="hljs-number">10</span>,<span class="hljs-number">0</span>))
+
+<span class="hljs-comment">//Print out the distance vecter, it should be 10 since X-10 is 10 pixels away from X-0</span>
+<span class="hljs-built_in">console</span>.log(Distance)</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakerimagesprite'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new ImageSprite(URL)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>A object that renders a image to the screen when added to a world</p>
+
+    <div class='pre p1 fill-light mt0'>new ImageSprite(URL: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+    <p>
+      Extends
+      
+        GameMaker.BaseObject
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>URL</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the image the sprite renders as
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakershapesprite'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new ShapeSprite(Color)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>A object that renders a square to the screen when added to a world</p>
+
+    <div class='pre p1 fill-light mt0'>new ShapeSprite(Color: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+    <p>
+      Extends
+      
+        GameMaker.BaseObject
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Color</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the color the sprite renders as
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='gamemakertextsprite'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new TextSprite(Text)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>A object that renders Text to the screen when added to a world</p>
+
+    <div class='pre p1 fill-light mt0'>new TextSprite(Text: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+    <p>
+      Extends
+      
+        GameMaker.BaseObject
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>Text</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The text that the text sprite renders
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='plugins'>
+      Plugins
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Javascript object holding all the usable and loaded in plugins</p>
+
+    <div class='pre p1 fill-light mt0'>Plugins</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='pluginsmouse'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new Mouse(world)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>A plugin that allows you to get the canvas position of the mouse pointer,</p>
+<p>!!Keep in mind that you have to use document events to check for mouse clicks.
+This plugin is only use to find the canvas position of the mouse!!</p>
+
+    <div class='pre p1 fill-light mt0'>new Mouse(world: <a href="#gamemakerworld">GameMaker.World</a>)</div>
+  
+  
+    <p>
+      Extends
+      
+        GameMaker.BasePlugin
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>world</span> <code class='quiet'>(<a href="#gamemakerworld">GameMaker.World</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Creating a new world and then adding the mouse plugin to it</span>
+
+<span class="hljs-comment">//Create the world</span>
+<span class="hljs-keyword">const</span> world = <span class="hljs-keyword">new</span> GameMaker.World(GameMaker.Init())
+
+<span class="hljs-comment">//Add the mouse plugin to the world</span>
+<span class="hljs-keyword">new</span> GameMaker.Plugins.Mouse(world)</pre>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Check for mouse clicks</span>
+
+<span class="hljs-comment">//Add a event listener for when any mouse button has been pressed</span>
+<span class="hljs-keyword">new</span> GameMaker.World(GameMaker.init()).canvas.addEventListener(<span class="hljs-string">&quot;mousedown&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+
+ <span class="hljs-comment">//Print out the mouse event</span>
+ <span class="hljs-built_in">console</span>.log(e)
+
+})</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='pluginskeybord'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>new Keybord(world)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>A plugin that allows you to get the currntly pressed buttons on a keybord</p>
+
+    <div class='pre p1 fill-light mt0'>new Keybord(world: <a href="#gamemakerworld">GameMaker.World</a>)</div>
+  
+  
+    <p>
+      Extends
+      
+        GameMaker.BasePlugin
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>world</span> <code class='quiet'>(<a href="#gamemakerworld">GameMaker.World</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">//Creating a new world and then adding the mouse plugin to it</span>
+<span class="hljs-comment">//Create the world</span>
+<span class="hljs-keyword">const</span> world = <span class="hljs-keyword">new</span> GameMaker.World(GameMaker.Init())
+<span class="hljs-comment">//Add the keybord plugin to the world</span>
+<span class="hljs-keyword">new</span> GameMaker.Plugins.Keybord(world)</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

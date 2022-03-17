@@ -1,5 +1,24 @@
+   /**
+    * The main Javascript object that contains all the methods and classes of GameMaker.js
+    */
 const GameMaker = {
 
+
+   /**
+    * Creates a canvas element and then appends it to the html Body
+    * 
+    * It will also auto update the canvs to take up 100% of the screen so it will scale
+    * @returns {canvas} usable HTML canvas element
+    * @method
+    * @example 
+    * //Make a canvas and add it to the HTML body, then print it to the console
+    * console.log(GameMaker.Init())
+    * 
+    * @example
+    * //Make a new world and then auto generate a canvas
+    * const world = GameMaker.World(GameMaker.Init())
+    * 
+    */
    Init: function () {
 
       var Canvas = document.createElement('canvas')
@@ -22,6 +41,24 @@ const GameMaker = {
 
    },
 
+   /**
+   * The container for objects and also used for rendering
+   * @param {HTMLCanvasElement} canvas
+   * @class
+   * @example //Make a new world with canvas then update it every 60th of a second
+   * 
+   * //Make the world
+   * const world = new GameMaker.World(GameMaker.Init())
+   * 
+   * //Update the frame every 60th of a second
+   *setInterval(() => {
+   *
+   *   //Render the world and push it to the canvas/screen
+   *   world.Render()
+   *
+   *}, 1000/60)
+   */
+
    World: class World {
       constructor(canvas) {
          this.canvas = canvas
@@ -32,6 +69,11 @@ const GameMaker = {
          this.objects = []
          this.plugins = {}
          this.backgroundColor = '#ffffff'
+         /**
+         * Add sprite to render list so it will render to the canvas
+         * @param {GameMaker.BaseObject} Object
+         * @memberof GameMaker.World
+         */
          this.addobjects = function (Object) {
 
             this.objects.push(Object)
@@ -41,6 +83,11 @@ const GameMaker = {
          
          this.canvasContext.save()
 
+         /**
+         * Renders all objects in world to canvas
+         * @memberof GameMaker.World
+         * @example //Look at the GameMaker.World example to see how its used
+         */
          this.render = function () {
 
             this.canvasContext.restore()
@@ -118,15 +165,76 @@ const GameMaker = {
       }
    },
 
+
+   /**
+   * @description
+   * A object that contains 2 numbers X and Y, used for things like position and size
+   * @param {number} X
+   * @param {number} Y
+   * @class
+   * 
+   * 
+   * @example
+   * 
+   * //Create a new Vecter2 where both the X and Y are 0
+   * var Vecter2 = new GameMaker.Vecter2(0,0)
+   */
+
    Vecter2: class Vecter2 {
       constructor(X, Y) {
          this.X = X;
          this.Y = Y;
+         /** 
+         * Given another Vecter2 it will return a number between 0 and 360 that is the angle between the 2 positions
+         * @param {GameMaker.Vecter2} Pos2
+         * @returns {number} Angle
+         * @memberof GameMaker.Vecter2
+         * 
+         * @example
+         * //How to use the Angle function
+         * 
+         * //Create a new Vecter2 (Just for the example)
+         * var Vecter2 = new GameMaker.Vecter2(0,0)
+         * 
+         * //Saves the angle to a var
+         * var Angle = Vecter2.angle(new GameMaker.Vecter2(0,10))
+         * 
+         * //Print out the angle vecter, it should be 90
+         * console.log(Angle)
+         */
          this.angle = (Pos2) => { return Math.atan2(Pos2.Y - this.Y, Pos2.X - this.X) * 180 / Math.PI; }
+         /** 
+         * Given another Vecter2 it will return a number representing the distance in pixels between the 2 positions
+         * @param {GameMaker.Vecter2} Pos2
+         * @returns {number} Distance
+         * @memberof GameMaker.Vecter2
+         * 
+         * @example
+         * //How to use the Distance function
+         * 
+         * //Create a new Vecter2 (Just for the example)
+         * var Vecter2 = new GameMaker.Vecter2(0,0)
+         * 
+         * //Saves the distance to a var
+         * var Distance = Vecter2.angle(new GameMaker.Vecter2(10,0))
+         * 
+         * //Print out the distance vecter, it should be 10 since X-10 is 10 pixels away from X-0
+         * console.log(Distance)
+         */
          this.distance = (Pos2) => { return Math.sqrt((this.X - Pos2.X) * (this.X - Pos2.X) + (this.Y - Pos2.Y) * (this.Y - Pos2.Y)); }
       }
    },
 
+   /**
+   * A Base object that can be used to make new renderable objects
+   * @param {string} Name
+   * @param {GameMaker.Vecter2} Position
+   * @param {GameMaker.Vecter2} Position
+   * @param {GameMaker.Vecter2} Size
+   * @param {number} Angle
+   * @class
+   * @private
+   */
    BaseObject: class BaseObject {
       constructor(Name, Position, Size, Angle) {
 
@@ -141,6 +249,12 @@ const GameMaker = {
       }
    },
 
+   /**
+   * A Base plugin that can be used to make new plugins
+   * @param {GameMaker.World} World
+   * @class
+   * @private
+   */
    BasePlugin: class BasePlugin {
       constructor(World) {
 
@@ -150,10 +264,19 @@ const GameMaker = {
       }
    },
 
+   /**
+   * Javascript object holding all the usable and loaded in plugins
+   * @memberof Body
+   */
    Plugins: {}
 
 }
 
+   /**
+   * A object that renders a image to the screen when added to a world
+   * @param {string} URL the image the sprite renders as
+   * @class
+   */
 GameMaker.ImageSprite = class ImageSprite extends GameMaker.BaseObject {
    constructor(Name, Position, Size, Angle, ImageURL) {
 
@@ -174,6 +297,11 @@ GameMaker.ImageSprite = class ImageSprite extends GameMaker.BaseObject {
    }
 }
 
+   /**
+   * A object that renders a square to the screen when added to a world
+   * @param {string} Color the color the sprite renders as
+   * @class
+   */
 GameMaker.ShapeSprite = class ShapeSprite extends GameMaker.BaseObject {
    constructor(Name, Position, Size, Angle, Color) {
 
@@ -184,6 +312,11 @@ GameMaker.ShapeSprite = class ShapeSprite extends GameMaker.BaseObject {
    }
 }
 
+   /**
+   * A object that renders Text to the screen when added to a world
+   * @param {string} Text The text that the text sprite renders
+   * @class
+   */
 GameMaker.TextSprite = class TextSprite extends GameMaker.BaseObject {
    constructor(Name, Position, Angle, Text) {
 
@@ -197,6 +330,34 @@ GameMaker.TextSprite = class TextSprite extends GameMaker.BaseObject {
    }
 }
 
+   /**
+    @description 
+   * A plugin that allows you to get the canvas position of the mouse pointer,
+   * 
+   * !!Keep in mind that you have to use document events to check for mouse clicks.
+   * This plugin is only use to find the canvas position of the mouse!!
+   * 
+   * @class
+   * @memberof Body.Plugins
+   * @param {GameMaker.World} world
+   * @example //Creating a new world and then adding the mouse plugin to it
+   * 
+   * //Create the world
+   * const world = new GameMaker.World(GameMaker.Init())
+   * 
+   * //Add the mouse plugin to the world
+   * new GameMaker.Plugins.Mouse(world)
+   * 
+   * @example //Check for mouse clicks
+   * 
+   * //Add a event listener for when any mouse button has been pressed
+   * new GameMaker.World(GameMaker.init()).canvas.addEventListener("mousedown", function (e) {
+   *
+   *  //Print out the mouse event
+   *  console.log(e)
+   * 
+   *})
+   */
 GameMaker.Plugins.Mouse = class Mouse extends GameMaker.BasePlugin {
    constructor(World) {
 
@@ -221,6 +382,17 @@ GameMaker.Plugins.Mouse = class Mouse extends GameMaker.BasePlugin {
    }
 }
 
+   /**
+   * A plugin that allows you to get the currntly pressed buttons on a keybord
+   * @class
+   * @memberof Body.Plugins
+   * @param {GameMaker.World} world
+   * @example //Creating a new world and then adding the mouse plugin to it
+   * //Create the world
+   * const world = new GameMaker.World(GameMaker.Init())
+   * //Add the keybord plugin to the world
+   * new GameMaker.Plugins.Keybord(world)
+   */
 GameMaker.Plugins.Keybord = class Keybord extends GameMaker.BasePlugin {
    constructor(World) {
 

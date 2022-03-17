@@ -1,0 +1,1 @@
+documentation build GMJS.js -f html -o Docs --project-name GameMaker.JS -w GMJS.js
