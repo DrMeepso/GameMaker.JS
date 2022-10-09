@@ -1,5 +1,5 @@
 # GameMaker.JS
-##### A game making lib made to be as easy as possible!
+##### Render stuff with a canvas made easy
 
 ---
 
