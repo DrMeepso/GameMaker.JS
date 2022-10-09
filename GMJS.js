@@ -355,6 +355,4 @@ GameMaker.TextSprite = class TextSprite extends GameMaker.BaseObject {
    }
 }
 
-}
-
 console.log("GameMaker Started")
