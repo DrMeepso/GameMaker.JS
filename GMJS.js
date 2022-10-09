@@ -280,29 +280,7 @@ const GameMaker = {
          this.opacity = 100
 
       }
-   },
-
-   /**
-   * A Base plugin that can be used to make new plugins
-   * @param {GameMaker.World} World
-   * @class
-   * @private
-   */
-   BasePlugin: class BasePlugin {
-      constructor(World) {
-
-         this.world = World
-         this.type = "BasePlugin"
-
-      }
-   },
-
-   /**
-   * Javascript object holding all the usable and loaded in plugins
-   * @memberof Body
-   */
-   Plugins: {}
-
+   }
 }
 
    /**
@@ -377,103 +355,6 @@ GameMaker.TextSprite = class TextSprite extends GameMaker.BaseObject {
    }
 }
 
-   /**
-    @description 
-   * A plugin that allows you to get the canvas position of the mouse pointer,
-   * 
-   * **Keep in mind you have to use document events to check for mouse clicks.
-   * This plugin is only use to find the canvas position of the mouse**
-   * 
-   * @class
-   * @memberof Body.Plugins
-   * @param {GameMaker.World} world
-   * @example //Creating a new world and then adding the mouse plugin to it
-   * 
-   * //Create the world
-   * const world = new GameMaker.World(GameMaker.Init())
-   * 
-   * //Add the mouse plugin to the world
-   * new GameMaker.Plugins.Mouse(world)
-   * 
-   * @example //Check for mouse clicks
-   * 
-   * //Add a event listener for when any mouse button has been pressed
-   * new GameMaker.World(GameMaker.init()).canvas.addEventListener("mousedown", function (e) {
-   *
-   *  //Print out the mouse event
-   *  console.log(e)
-   * 
-   *})
-   */
-GameMaker.Plugins.Mouse = class Mouse extends GameMaker.BasePlugin {
-   constructor(World) {
-
-      super(World)
-      this.type = "Mouse"
-      this.world.plugins.mouse = {}
-      this.world.plugins.mouse.pos = new GameMaker.Vector2(0, 0)
-
-      var CurrentWorld = this.world
-
-      this.world.canvas.addEventListener("mousemove", function (e) {
-
-         var cRect = CurrentWorld.canvas.getBoundingClientRect();
-         var canvasX = Math.round(e.clientX - cRect.left);
-         var canvasY = Math.round(e.clientY - cRect.top);
-
-         this.pos = new GameMaker.Vector2(canvasX, canvasY)
-         CurrentWorld.plugins.mouse.pos = this.pos
-
-      })
-
-   }
-}
-
-   /**
-   * A plugin that allows you to get the currntly pressed buttons on a Keyboard
-   * @class
-   * @memberof Body.Plugins
-   * @param {GameMaker.World} world
-   * @example //Creating a new world and then adding the mouse plugin to it
-   * //Create the world
-   * const world = new GameMaker.World(GameMaker.Init())
-   * //Add the Keyboard plugin to the world
-   * new GameMaker.Plugins.Keyboard(world)
-   */
-GameMaker.Plugins.Keyboard = class Keyboard extends GameMaker.BasePlugin {
-   constructor(World) {
-
-      super(World)
-      this.type = "Keyboard"
-      this.world.plugins.Keyboard = { down: [] }
-
-      this.isKeyDown = (key) => {
-         if (keys[key] != undefined) {
-
-            return True
-
-         } else {
-
-            return False
-
-         }
-      }
-
-      var keys = this.world.plugins.Keyboard.down
-
-      window.addEventListener("keydown",
-         function (e) {
-            keys[e.keyCode] = true;
-         },
-         false);
-
-      window.addEventListener('keyup',
-         function (e) {
-            keys[e.keyCode] = undefined;
-         },
-         false);
-
-   }
 }
 
 console.log("GameMaker Started")
